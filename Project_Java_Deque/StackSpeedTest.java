@@ -6,12 +6,12 @@ public class StackSpeedTest {
 
         Deque<Integer> stack = new LinkedList<>();
 
-        for (int i = 0; i < max; i++) {
+        for (int i = 1; i <= max; i++) {
             stack.addFirst(i);
         }
 
         System.out.println(String.format("stack.addFirst(%d) done.", max));
-        System.out.println(String.format("stack.contains(0) ... %s", Boolean.toString(stack.contains(0))));
+        System.out.println(String.format("stack.contains(1) ... %s", Boolean.toString(stack.contains(1))));
 
         while (stack.isEmpty() == false) {
             /*
@@ -23,7 +23,7 @@ public class StackSpeedTest {
             stack.removeFirst();
         }
 
-        System.out.println(String.format("stack.removeFirst(%d) done.", 0));
+        System.out.println(String.format("stack.removeFirst() done."));
         System.out.println(String.format("stack.isEmpty()   ... %s", Boolean.toString(stack.isEmpty())));
 
         long end = System.currentTimeMillis();

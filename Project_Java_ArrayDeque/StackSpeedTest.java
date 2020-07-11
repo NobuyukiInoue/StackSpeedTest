@@ -6,12 +6,12 @@ public class StackSpeedTest {
 
         ArrayDeque<Integer> stack = new ArrayDeque<>();
 
-        for (int i = 0; i < max; i++) {
+        for (int i = 1; i <= max; i++) {
             stack.push(i);
         }
 
         System.out.println(String.format("stack.push(%d) done.", max));
-        System.out.println(String.format("stack.contains(0) ... %s", Boolean.toString(stack.contains(0))));
+        System.out.println(String.format("stack.contains(1) ... %s", Boolean.toString(stack.contains(1))));
 
         while (stack.isEmpty() == false) {
             /*
@@ -23,7 +23,7 @@ public class StackSpeedTest {
             stack.pop();
         }
 
-        System.out.println(String.format("stack.pop(%d) done.", 0));
+        System.out.println(String.format("stack.pop() done."));
         System.out.println(String.format("stack.isEmpty()   ... %s", Boolean.toString(stack.isEmpty())));
 
         long end = System.currentTimeMillis();

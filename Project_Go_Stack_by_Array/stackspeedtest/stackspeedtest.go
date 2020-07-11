@@ -15,13 +15,13 @@ func Main(max int) {
 
 	stk = stack.Constructor()
 
-	for i := 0; i < max; i++ {
+	for i := 1; i <= max; i++ {
 		stk.Push(i)
 //		fmt.Printf("stk.Push(%d)\n", i)
 	}
 
 	fmt.Printf("stk.Push(%d) done.\n", max)
-	fmt.Printf("stk.Search(%d) ... %d\n", 0, stk.Search(0))
+	fmt.Printf("stk.Search(%d) ... %d\n", 1, stk.Search(1))
 
 	for stk.Empty() == false {
 /*
@@ -34,7 +34,7 @@ func Main(max int) {
 
 	}
 
-	fmt.Printf("stk.Pop(%d) done.\n", 0)
+	fmt.Printf("stk.Pop() done.\n")
 	fmt.Printf("stk.Empty()   ... %s\n", strconv.FormatBool(stk.Empty()))
 
 	timeEnd := time.Now()

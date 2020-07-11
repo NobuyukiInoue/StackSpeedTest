@@ -7,11 +7,11 @@ def main(max):
 
     stack = []
 
-    for i in range(max):
+    for i in range(1, max + 1):
         stack.append(i)
 
     print("stack.push({0:d}) done.".format(max))
-    print("stack.index(0) ... {0:d}".format(stack.index(0)))
+    print("stack.index(1) ... {0:d}".format(stack.index(1)))
 
     while len(stack) > 0:
         """
@@ -22,7 +22,7 @@ def main(max):
         """
         stack.pop()
 
-    print("stack.pop({0:d}) done.".format(0))
+    print("stack.pop() done.".format())
     print("len(stack) == {0:d}".format(len(stack)))
 
     time1 = time.time()

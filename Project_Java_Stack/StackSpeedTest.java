@@ -6,12 +6,12 @@ public class StackSpeedTest {
 
         Stack<Integer> stack = new Stack<>();
 
-        for (int i = 0; i < max; i++) {
+        for (int i = 1; i <= max; i++) {
             stack.push(i);
         }
 
         System.out.println(String.format("stack.push(%d) done.", max));
-        System.out.println(String.format("stack.Search(0) ... %d", stack.search(0)));
+        System.out.println(String.format("stack.Search(1) ... %d", stack.search(1)));
 
         while (stack.empty() == false) {
             /*
@@ -23,7 +23,7 @@ public class StackSpeedTest {
             stack.pop();
         }
 
-        System.out.println(String.format("stack.pop(%d) done.", 0));
+        System.out.println(String.format("stack.pop() done."));
         System.out.println(String.format("stack.empty()   ... %s", Boolean.toString(stack.empty())));
 
         long end = System.currentTimeMillis();

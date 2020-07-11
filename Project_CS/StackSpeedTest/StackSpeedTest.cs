@@ -12,13 +12,13 @@ namespace Project_CS
 
             Stack<int> stack = new Stack<int>();
             
-            for (int i = 0; i < max; i++)
+            for (int i = 1; i <= max; i++)
             {
                 stack.Push(i);
             }
 
             Console.WriteLine("stack.Push({0}) done.", max);
-            Console.WriteLine("stack.Contains({0}) ... {1}", 0, stack.Contains(0));
+            Console.WriteLine("stack.Contains({0}) ... {1}", 1, stack.Contains(1));
 
             while (stack.Count > 0)
             {
@@ -31,7 +31,7 @@ namespace Project_CS
                 stack.Pop();
             }
 
-            Console.WriteLine("stack.Pop({0}) done.", 0);
+            Console.WriteLine("stack.Pop() done.");
             Console.WriteLine("stack.Count ... {0}", stack.Count);
 
             sw.Stop();
