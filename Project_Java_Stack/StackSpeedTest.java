@@ -28,6 +28,6 @@ public class StackSpeedTest {
 
         long end = System.currentTimeMillis();
 
-        System.out.println("Execute time : " + (end - start)  + "ms\n");
+        System.out.println("Execute time : " + (end - start)  + " [ms]\n");
     }
 }
