@@ -28,10 +28,3 @@ def main(max):
     time1 = time.time()
 
     print("Execute time : {0:f} [ms]\n".format((time1 - time0)*1000))
-
-def exit_msg(argv0):
-    print("Usage: python {0} [target number]".format(argv0))
-    exit(0)
-
-if __name__ == "__main__":
-    main()
