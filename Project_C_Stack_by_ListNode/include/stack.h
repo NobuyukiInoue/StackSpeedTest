@@ -14,7 +14,8 @@ struct Queue {
 };
 
 void push(struct Queue *queue, int new_val);
-void pop(struct Queue *queue);
+int pop(struct Queue *queue);
+int top(struct Queue *queue);
 int size(struct Queue *queue);
 bool isEmpty(struct Queue *queue);
 int search(struct Queue *queue, int val);

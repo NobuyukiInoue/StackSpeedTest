@@ -28,10 +28,12 @@ void push(struct Queue *queue, int new_val) {
     }
 }
 
-void pop(struct Queue *queue) {
+int pop(struct Queue *queue) {
     if (queue == NULL || queue->front == NULL) {
-        return;
+        return 0;
     }
+
+    int item = top(queue);
 
     struct ListNode *tmp = queue->front;
     queue->front = queue->front->next;
@@ -43,6 +45,12 @@ void pop(struct Queue *queue) {
         queue->tail = NULL;
         queue->size = 0;
     }
+
+    return item;
+}
+
+int top(struct Queue *queue) {
+    return queue->tail->val;
 }
 
 int size(struct Queue *queue) {
