@@ -47,7 +47,7 @@ int stackspeedtest(int max) {
     stackDestroy(s);
 
     clock_t time_end = clock();
-    printf("Execute time : %.3f [ms]\n\n", (double)(time_end - time_start)*1000/CLOCKS_PER_SEC);
+    printf("Execute time : %f [ms]\n\n", (double)(time_end - time_start)*1000/CLOCKS_PER_SEC);
 
     return 0;
 }
