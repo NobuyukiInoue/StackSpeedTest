@@ -2,7 +2,7 @@
 #include "../include/operate_stack.h"
 
 /**
-    Implement Queue by 64k segments.
+    Implement Stack using Queues.
  */
 
 /* Create a stack */
@@ -13,6 +13,9 @@ Stack* stackCreate(int max) {
     stack->queue = (Queue **)malloc(sizeof(Queue *)*max);
     stack->queue[0] = (Queue *)malloc(sizeof(Queue));
     stack->queue[0]->index = -1;
+    for (int i = 1; i < max; i++) {
+        stack->queue[i] = NULL;
+    }
     return stack;
 }
 
@@ -31,8 +34,10 @@ void stackPush(Stack *stack, int element) {
         }
 
         stack->index++;
-        stack->queue[stack->index] = (Queue *)malloc(sizeof(Queue));
-        stack->queue[stack->index]->index = -1;
+        if (stack->queue[stack->index] == NULL) {
+            stack->queue[stack->index] = (Queue *)malloc(sizeof(Queue));
+            stack->queue[stack->index]->index = -1;
+        }
 
         push(stack->queue[stack->index], element);
     }
@@ -46,7 +51,7 @@ int stackPop(Stack *stack) {
 
     if (stack->queue[stack->index]->index < 0) {
         if (stack->index > 0) {
-            free(stack->queue[stack->index]);
+        //  free(stack->queue[stack->index]);
             stack->index--;
         }
     }
@@ -98,7 +103,7 @@ int stackSearch_from_tail(Stack *stack, int val) {
     return -1;
 }
 
-/* Return stack Size */
+/* Return stack size */
 int stackSize(Stack *stack) {
     return (stack->index)*65536 + size(stack->queue[stack->index]);
 }
