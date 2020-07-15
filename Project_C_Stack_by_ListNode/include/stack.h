@@ -2,20 +2,22 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct ListNode {
+typedef struct ListNode {
     int val;
     struct ListNode *next;
-};
+} ListNode;
 
-struct Queue {
+typedef struct {
     int size;
-    struct ListNode *front;
-    struct ListNode *tail;
-};
+    struct ListNode *node;
+} Stack;
 
-void push(struct Queue *queue, int new_val);
-int pop(struct Queue *queue);
-int top(struct Queue *queue);
-int size(struct Queue *queue);
-bool isEmpty(struct Queue *queue);
-int search(struct Queue *queue, int val);
+Stack* stackCreate(void);
+void stackPush(Stack *stack, int element);
+int stackPop(Stack *stack);
+int stackTop(Stack *stack);
+bool stackEmpty(Stack *stack);
+int stackSearch(Stack *stack, int val);
+int stackSize(Stack *stack);
+void stackDestroy(Stack *stack);
+int ListNode_free(struct ListNode* node);

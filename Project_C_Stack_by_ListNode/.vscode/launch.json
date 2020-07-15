@@ -13,7 +13,7 @@
             "miDebuggerPath": "C:\\Programs\\mingw\\bin\\gdb.exe",
         //  "args": [],
             "args": [
-                "../testdata.txt"
+                "100"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

@@ -1,86 +1,118 @@
+#include <time.h>
 #include "../include/stack.h"
 
 /**
-    Implement Queue using Linked List.
+    Implement Stack using Queues.
  */
 
-void push(struct Queue *queue, int new_val) {
-    if (queue == NULL) {
+/* Create a stack */
+Stack* stackCreate(void) {
+    Stack *stack = (Stack *)malloc(sizeof(Stack));
+
+    if (stack == NULL) {
+        return NULL;
+    }
+
+    /* I'm a stack implemented using linked queue, so I don't need maxSize */
+    stack->size = 0;
+
+    return stack;
+}
+
+/* Push element x onto stack */
+void stackPush(Stack *stack, int element) {
+    if (stack == NULL) {
         return;
     }
 
-    struct ListNode *new_node = (struct ListNode *)malloc(sizeof(struct ListNode));
-
-    new_node->val = new_val;
-    new_node->next = NULL;
-
-    if (queue->tail != NULL) {
-        queue->tail->next = new_node;
+    ListNode *new_node = (ListNode *)malloc(sizeof(struct ListNode));
+    new_node->val = element;
+    if (stack->node != NULL) {
+        new_node->next = stack->node;
+        stack->node = new_node;
     }
 
-    queue->tail = new_node;
-
-    if (queue->front == NULL) {
-        queue->front = new_node;
-        queue->size = 1;
-    } else {
-        queue->size++;
-    }
+    stack->size++;
 }
 
-int pop(struct Queue *queue) {
-    if (queue == NULL || queue->front == NULL) {
+/* Removes the element on top of the stack */
+int stackPop(Stack *stack) {
+    if (stack == NULL) {
         return 0;
     }
 
-    int item = top(queue);
+	int item = stack->node->val;
+	if (stack->node->next != NULL) {
+        ListNode *tmp = stack->node;
+		stack->node = stack->node->next;
+        free(tmp);
+	} else {
+        free(stack->node);
+		stack->node = NULL;
+	}
 
-    struct ListNode *tmp = queue->front;
-    queue->front = queue->front->next;
+	stack->size--;
 
-    free(tmp);
-    queue->size--;
-
-    if (queue->front == NULL) {
-        queue->tail = NULL;
-        queue->size = 0;
-    }
-
-    return item;
+	return item;
 }
 
-int top(struct Queue *queue) {
-    return queue->tail->val;
-}
-
-int size(struct Queue *queue) {
-    if (queue == NULL) {
+/* Get the top element */
+int stackTop(Stack *stack) {
+    if (stack == NULL) {
         return 0;
-    } else {
-        return queue->size;
     }
+
+	return stack->node->val;
 }
 
-bool isEmpty(struct Queue *queue) {
-    if (queue == NULL) {
-        return true;
-    } else {
-        return (queue->size == 0) ? true : false;
-    }
+/* Return whether the stack is empty */
+bool stackEmpty(Stack *stack) {
+    return (stack->size == 0) ? true: false;
 }
 
-int search(struct Queue *queue, int val) {
-    if (queue == NULL) {
-        return -1;
-    }
+/* Return val index */
+int stackSearch(Stack *stack, int val) {
+    ListNode *workNode = stack->node;
 
-    struct Queue *temp = queue;
-    for (int i = 0; temp->front != NULL; i++) {
-        if (temp->front->val == val) {
-            return i;
+    for (int index = 0; workNode != NULL; index++) {
+        if (workNode->val == val) {
+            return index;
         }
-        temp->front = temp->front->next;
+        workNode = workNode->next;
     }
 
     return -1;
+}
+
+int stackSize(Stack *stack) {
+    return stack->size;
+}
+
+/* Destroy the stack */
+void stackDestroy(Stack *stack) {
+    if (stack == NULL) {
+        return;
+    }
+
+    if (stack->size > 0) {
+        ListNode_free(stack->node);
+    }
+
+    free(stack);
+}
+
+int ListNode_free(struct ListNode* node) {
+    if (node == NULL)
+        return 0;
+    
+    int result = 0;
+
+    if (node->next != NULL) {
+        result += ListNode_free(node->next);
+    }
+
+    free(node);
+    result++;
+
+    return result;
 }
