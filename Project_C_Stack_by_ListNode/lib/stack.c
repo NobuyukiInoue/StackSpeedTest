@@ -41,19 +41,19 @@ int stackPop(Stack *stack) {
         return 0;
     }
 
-	int item = stack->node->val;
-	if (stack->node->next != NULL) {
+    int item = stack->node->val;
+    if (stack->node->next != NULL) {
         ListNode *tmp = stack->node;
-		stack->node = stack->node->next;
+        stack->node = stack->node->next;
         free(tmp);
-	} else {
+    } else {
         free(stack->node);
-		stack->node = NULL;
-	}
+        stack->node = NULL;
+    }
 
-	stack->size--;
+    stack->size--;
 
-	return item;
+    return item;
 }
 
 /* Get the top element */
@@ -62,7 +62,7 @@ int stackTop(Stack *stack) {
         return 0;
     }
 
-	return stack->node->val;
+    return stack->node->val;
 }
 
 /* Return whether the stack is empty */
