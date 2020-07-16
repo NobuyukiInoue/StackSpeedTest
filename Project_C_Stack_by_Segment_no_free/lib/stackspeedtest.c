@@ -44,12 +44,7 @@ int stackspeedtest2(Stack *s, int max) {
     }
 
     printf("stackPop() done.\n");
-    if (stackEmpty(s) != 0) {
-        printf("stackEmpty() ... %s\n", "true");
-    } else {
-        printf("stackEmpty() ... %s\n", "false");
-    }
-
+    printf("stackEmpty() ... %s\n", stackEmpty(s) != 0 ? "true": "false");
     printf("destroy stack.\n");
 
     clock_t time_end = clock();
