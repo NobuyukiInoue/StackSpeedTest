@@ -13,5 +13,5 @@ int main(int argc, char* argv[])
     // Read the value you want to factor
     long long int max = strtoll(argv[1], NULL, 10);
 
-    stackspeedtest((int)max);
+    stackspeedtest(max);
 }
