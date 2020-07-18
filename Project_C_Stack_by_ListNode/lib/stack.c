@@ -14,6 +14,7 @@ Stack* stackCreate(void) {
     }
 
     /* I'm a stack implemented using linked queue, so I don't need maxSize */
+    stack->node = NULL;
     stack->size = 0;
 
     return stack;
@@ -34,7 +35,6 @@ void stackPush(Stack *stack, int element) {
     new_node->val = element;
     new_node->next = stack->node;
     stack->node = new_node;
-
     stack->size++;
 }
 
