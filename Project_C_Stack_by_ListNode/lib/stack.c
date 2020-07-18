@@ -26,11 +26,14 @@ void stackPush(Stack *stack, int element) {
     }
 
     ListNode *new_node = (ListNode *)malloc(sizeof(struct ListNode));
-    new_node->val = element;
-    if (stack->node != NULL) {
-        new_node->next = stack->node;
-        stack->node = new_node;
+    if (new_node == NULL) {
+        fprintf(stderr, "myStackPush(%d) new_node allocate error.", element);
+        exit(-1);
     }
+
+    new_node->val = element;
+    new_node->next = stack->node;
+    stack->node = new_node;
 
     stack->size++;
 }
